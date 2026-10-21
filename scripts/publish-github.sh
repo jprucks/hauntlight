@@ -3,7 +3,7 @@
 set -euo pipefail
 
 repo='jprucks/hauntlight'
-version='v1.0.0'
+version='v1.1.0'
 root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
 fail() { printf '%s\n' "$*" >&2; exit 1; }
 command -v git >/dev/null 2>&1 || fail 'Install Git before running this script.'

@@ -3,7 +3,7 @@
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 root = Path(__file__).resolve().parent.parent
-out = root / 'dist/downloads/hauntlight-v1.0.0.zip'
+out = root / 'dist/downloads/hauntlight-v1.1.0.zip'
 out.parent.mkdir(exist_ok=True)
 with ZipFile(out, 'w', ZIP_DEFLATED) as z:
     for p in sorted(root.rglob('*')):
