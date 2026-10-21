@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 — 2026-10-21
+
+- Add ten orientation-neutral scenes and an Any orientation filter, plus wall/ceiling presets.
+- Add adaptive rendering quality, cached thumbnails/textures, and idle/offscreen/blackout animation suspension.
+- Improve iPad portrait/landscape layout, touch targets, viewport handling and on-stage alignment controls.
+- Preserve existing saved layouts and all original scene IDs.
+
 Versions follow Semantic Versioning. Commit messages should follow Conventional Commits.
 
 ## [1.0.0] - 2026-10-20
