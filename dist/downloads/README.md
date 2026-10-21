@@ -1,3 +1,3 @@
 # Source downloads
 
-`hauntlight-v1.0.0.zip` is the standalone source package linked from the app. Rebuild it from the repository root with `python3 scripts/package-source.py`.
+`hauntlight-v1.1.0.zip` is the current standalone source package. Rebuild it with `python3 scripts/package-source.py`. Older version downloads are retained.
