@@ -88,7 +88,7 @@
         node.setAttribute('aria-hidden', 'true');
         rec = self.records[key] = { canvas: node, ctx: node.getContext('2d'), maskKey: '', transformKey: '' };
       }
-      self.container.appendChild(rec.canvas);
+      if(self.container.children[self.surfaces.indexOf(s)]!==rec.canvas)self.container.insertBefore(rec.canvas,self.container.children[self.surfaces.indexOf(s)]||null);
     });
     Object.keys(this.records).forEach(function (key) {
       if (!keep[key]) { self.records[key].canvas.remove(); delete self.records[key]; }
@@ -98,11 +98,11 @@
     this.width = Math.max(1, width); this.height = Math.max(1, height);
   };
   HauntRenderer.prototype.render = function (t, calibrate) {
-    var self = this, w = this.quality === 'low' ? 384 : (this.quality === 'high' ? 768 : 512), h = Math.round(w * 5 / 8);
+    var self = this, w = this.sourceWidth || (this.quality === 'low' ? 384 : (this.quality === 'high' ? 768 : 512)), h = Math.round(w * 5 / 8);
     this.surfaces.forEach(function (s) {
       var rec = self.records[String(s.id)]; if (!rec) return;
       var node = rec.canvas;
-      if (s.visible === false || !validQuad(s.points)) { node.style.display = 'none'; return; }
+      if (s.visible === false || s.opacity <= 0 || !validQuad(s.points)) { node.style.display = 'none'; return; }
       var transformKey = JSON.stringify(s.points) + ':' + self.width + ':' + self.height + ':' + w;
       if (transformKey !== rec.transformKey) {
         var m = matrix(s.points, self.width, self.height, w, h);
@@ -112,10 +112,13 @@
       }
       node.style.display = 'block'; node.style.opacity = String(clamp(s.opacity, 0, 1, 1));
       if (node.width !== w || node.height !== h) { node.width = w; node.height = h; }
+      var paintKey = [calibrate ? 'grid' : s.scene, calibrate ? s.name : t * s.speed, w, self.quality, s.feather, s.shape].join(':');
+      if(rec.paintKey === paintKey) return;
+      rec.paintKey = paintKey;
       var c = rec.ctx; c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; c.globalCompositeOperation = 'source-over'; c.clearRect(0, 0, w, h);
       c.save();
       if (calibrate) grid(c, w, h, s.name || s.id);
-      else if (root.HauntScenes) root.HauntScenes.draw(c, s.scene, t * clamp(s.speed, 0.1, 3, 1), w, h, {});
+      else if (root.HauntScenes) root.HauntScenes.draw(c, s.scene, t * clamp(s.speed, 0.1, 3, 1), w, h, {detail:self.quality});
       c.restore();
       var feather = clamp(s.feather, 0, 0.4, 0), shape = s.shape === 'ellipse' ? 'ellipse' : 'quad';
       if (feather || shape === 'ellipse') {
