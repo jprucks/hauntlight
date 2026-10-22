@@ -1,71 +1,68 @@
-# Hauntlight 1.1.0
+# Hauntlight 1.2.0
 
-Touch-friendly Halloween projection mapping for Safari on an iPad (5th generation), with an Epson PowerLite 980W connected by screen mirroring.
+Portable projection mapping for Mac, Windows, and iPad. Pick an animated scene, fit its four corners to a wall, ceiling or object, and project it.
 
-**Open:** https://hauntlight-jprucks.jprucks.chatgpt.site
+## Start on Mac or Windows
 
-The hosted app is private and may request ChatGPT sign-in. This release targets Safari/iPadOS **16.4 or later** within the iPad 5's supported 16.x line. Hardware compatibility and performance have **not been verified on a physical iPad or projector**.
+1. Download **Hauntlight-Desktop-v1.2.0.zip** from [Releases](https://github.com/jprucks/hauntlight/releases), then extract it. Alternatively download **Hauntlight.html** from the app's **Download desktop app** button.
+2. Double-click **Hauntlight.html**. If it opens in a text editor, use **Open With** and select your browser.
+3. Choose a scene, click **Align**, fit the corners, then click **Project**.
 
-## What it does
+The desktop app is a single HTML file with its scripts, styles, icons, and all 24 scenes embedded. It needs **no installation, account, Python, Node, server, or internet connection** to run. Use a modern browser with JavaScript enabled. Keep the file on your Desktop or create a Mac alias / Windows shortcut to it. Close the browser tab to stop the app.
 
-- 24 animated scenes, including 10 with no preferred up/down direction, with wall, ceiling, garden and window layout presets.
-- Up to six independent surfaces with draggable convex quadrilaterals, fine corner adjustment and oval masks.
-- Per-surface opacity, edge softness, motion speed and visibility; duplicate/delete controls.
-- Calibration grid, full-screen alignment, clean projection mode, pause and blackout.
-- Browser-local layout saving and JSON import/export for backups or transfers.
-- iPad Home Screen icon and downloadable Mac `.webloc` desktop shortcut.
+The repository and [owner's hosted app](https://hauntlight-jprucks.jprucks.chatgpt.site) currently require access. A downloaded desktop file or ZIP can be shared directly with someone else; they do not need GitHub or ChatGPT access to run it. Making the repository public is a separate owner decision.
 
-Start with one to three surfaces on the iPad 5. Auto quality starts touch devices at 384 pixels per surface and a 20 fps target, reduces resolution for more than three visible surfaces, and steps down further when measured rendering work is high. Frame-rate targets and the six-surface limit are design choices, not measured hardware guarantees. Default visuals are procedural and do not require video downloads.
+## Connect a projector
 
-## iPad improvements in 1.1.0
+On Mac or Windows, connect your projector by HDMI or an available screen-mirroring method. You can mirror the computer, or extend the desktop and move the Hauntlight browser window onto the projector display. Maximize the window or enter fullscreen **before** calibration; keep the same display arrangement for the show.
 
-- Stage-first tablet layout in landscape and portrait, 44-pixel touch controls, 56-pixel corner hit areas, and 16-pixel input text to avoid Safari focus zoom.
-- Auto quality recommended for iPad 5; saved per browser. Low/Balanced/High overrides remain available.
-- Static thumbnails are drawn once and reused. Paused, calibration-grid, blacked-out, background, and off-screen editor views stop animation work. Unchanged surface textures and edge masks are reused.
-- Align mode keeps surface selection, corner selection, fine/coarse nudge buttons, and Project available on screen. Projection controls appear with one tap and hide after a short delay.
-- Safari viewport and orientation changes recalculate the stage without changing saved normalized corners.
-- Choose **Any orientation** in the scene library for Foxfire Spores, Moonlit Water, Velvet Nebula, Midnight Mandala, Cosmic Whirlpool, Potion Cells, Enchanted Honeycomb, Echoes in the Dark, Secret Mycelium, and Ember Constellation. These have no horizon, text, or upright characters.
+Hauntlight uses one browser window for editing and projection. It does not provide a separate private controller on the laptop. The canvas is 16:10: preserve aspect ratio in projector settings. If fullscreen is unavailable, maximize the browser. Keep the device powered and prevent screen sleep. A black pixel cannot eliminate the projector's residual light. Indoor projectors must remain dry.
 
-Verified with automated tests and desktop-browser checks at 1024×768 and 768×1024 iframe viewports. This tests responsive layout, not iPad GPU speed, touch hardware, Safari, or HDMI/AirPlay mirroring.
+## iPad
 
-## Connect and project
+Use a hosted copy in Safari, then **Share → Add to Home Screen**. The iPad Files preview is not a supported runtime for the downloaded HTML. On iPad 5, the target remains Safari/iPadOS 16.4+, Auto quality, and one to three surfaces to start. Use Apple TV mirroring or a suitable Lightning-to-HDMI adapter. For the Epson PowerLite 980W, connect Apple TV to HDMI for AirPlay; the projector is not a native AirPlay receiver. See [hardware research](docs/RESEARCH.md).
 
-1. Connect an **Apple TV to the Epson by HDMI**, then use iPad Control Center → Screen Mirroring. Keep the devices on the same Wi-Fi network. Alternatively use an **Apple Lightning Digital AV Adapter and HDMI cable**.
-2. Open the app in Safari. For a Home Screen shortcut, use Share → Add to Home Screen, then launch the icon. Keep the iPad in landscape orientation and on power.
-3. Set Settings → Display & Brightness → Auto-Lock → Never for the show. Restore your preferred setting afterward. Wake lock is unreliable in Home Screen web apps on iPadOS 16.
-4. Choose a layout and scenes. Enable **Grid** if useful, then press **Align** and move each corner to the actual object. Adjust opacity and edge softness. Calibrate with the same orientation and fullscreen state that you will use for projection.
-5. Press **Project**. Tap to reveal controls, use **Blackout** to blank the image, or return to the editor. Screen mirroring shows the same image on the iPad and projector; it does not provide a separate private control display.
+## Scenes and controls
 
-The projector's native format is **1280 × 800, 16:10**. The iPad's mirrored image can introduce black bars. Preserve aspect ratio in the projector settings and calibrate after connecting. Digital edge softness cannot remove the projector's residual light on black pixels. Outdoors, use after dark and keep the projector dry.
+- 24 animated scenes; the **Any orientation** collection has 10 options without a preferred up/down direction, for walls, ceilings and angled surfaces.
+- Up to six surfaces with four-corner mapping, oval masks, opacity, edge softness, motion speed and visibility.
+- Mouse, touch, and fine/coarse corner adjustment. Select a corner handle and use arrow keys for adjustment.
+- Calibration grid, pause, fullscreen alignment, projection and blackout.
+- Click or tap projection to reveal controls. **Escape** returns to the editor; **B** toggles blackout in projection mode.
+- Auto rendering quality lowers work on touch devices and adapts to expensive frames. Low/Balanced/High overrides remain available.
 
-The 980W does not advertise native AirPlay reception. Epson iProjection offers an alternative network-mirroring route on supported configurations, but animation quality and this exact setup require testing; see [research](docs/RESEARCH.md).
+## Save and transfer your setup
 
-## Shortcuts and saved layouts
+**Export layout** downloads a small JSON file. **Import layout** restores it. Export before switching presets, updating, moving or renaming the HTML file, clearing browser data, or changing browsers/devices.
 
-The app's **Desktop shortcut** button downloads a Mac `.webloc` link. Move it to the Mac Desktop and double-click to open the hosted app. It is a web shortcut, not a locally installed server. On iPad, use Add to Home Screen instead.
+Automatic saving is browser-local and best effort. Local-file storage behavior varies between browsers and file paths. Exported JSON is the reliable backup. Downloading the desktop app does **not** include your current layout; export and transfer that separately. Hauntlight has no cloud layout storage, telemetry, device-control backend, or embedded account credentials.
 
-Layouts are stored in the current browser. Export JSON before switching presets, clearing browser data or moving devices. Imported layouts contain configuration, not a video recording. The app makes no cloud backup of layouts.
+## Developers and hosting
 
-## Run from source
-
-This is a buildless HTML/CSS/JavaScript app. Serve `dist/` using a static web server, for example:
+The source is buildless HTML/CSS/JavaScript under `dist/`. A generated portable copy is also included at the root of the source ZIP. For development, serve `dist/` on localhost; for example:
 
 ```sh
-python3 -m http.server 8080 --directory dist
+python3 -m http.server 8080 --bind 127.0.0.1 --directory dist
 ```
 
-Open `http://localhost:8080` on that computer. For an iPad on the same trusted LAN, use the computer's LAN IP and port instead. Keep the server running; do not expose this development server to the internet. HTTPS hosting is recommended for the full browser feature set. Opening `index.html` directly is not the supported setup.
+Python is only needed for this development server or packaging, not for running the portable app. To host a copy, deploy `dist/` to a static HTTPS host. No authentication is implemented by the app itself; any access restriction comes from the hosting service. The `.openai` folder is specific to the owner's hosted deployment and is omitted from distributions.
 
-The existing MIT-licensed `perspective-transform` library is vendored under `dist/vendor/`; attribution and license accompany the source. See [research](docs/RESEARCH.md) for selection rationale and primary sources.
+Run checks using Node 20+ and build distributions using Python 3.9+:
 
-## GitHub and versions
+```sh
+npm test
+npm run check
+python3 scripts/package-source.py
+```
 
-Version: **1.1.0**. Source is backed up in the private [jprucks/hauntlight](https://github.com/jprucks/hauntlight) repository. Use semantic versioning and Conventional Commit messages; record changes in [CHANGELOG.md](CHANGELOG.md).
+Packaging creates `dist/downloads/Hauntlight.html`, a desktop ZIP, a source ZIP and `SHA256SUMS.txt`. The single-file app includes upstream license notices. Packaging uses an allowlist of source directories and excludes Git, host identity, environments, caches, downloads and personal layouts. Never place credentials in app assets.
 
-Clone the repository to work locally. Run `npm test` and `npm run check` before committing changes. Keep credentials and personal layout exports out of Git. The hosted app and GitHub are separate destinations; publishing a GitHub commit does not automatically redeploy the hosted app.
+Use semantic versions and Conventional Commits; record changes in [CHANGELOG.md](CHANGELOG.md). GitHub publication and the owner's hosted deployment are separate operations. The legacy `scripts/publish-github.sh` helper is only for bootstrapping a **new private** repository; it refuses an existing destination.
 
-The `scripts/publish-github.sh` helper is only for creating a new repository from a source ZIP; it intentionally refuses to overwrite an existing repository. Do not run it against the now-existing `jprucks/hauntlight` repository.
+## Validation and limits
 
-## Verification boundary
+Automated geometry, layout, scene, rendering-policy and distribution checks are included. Browser smoke checks cover editor and standalone bundle operation. Previous tablet checks covered 1024×768 and 768×1024 responsive layouts. Native Mac Safari, Windows Edge, actual iPad hardware, GPU performance and projector HDMI/AirPlay behavior have not all been physically tested. Verify your own setup before a show; six surfaces and frame-rate targets are not hardware guarantees.
 
-Source-level checks do not replace an on-device trial. Before an unattended show, verify touch calibration, all chosen scenes, fullscreen transitions, aspect ratio, sleep behavior and connection stability on your iPad and projector. This release does not claim physical hardware validation.
+## License
+
+MIT — see [LICENSE](LICENSE). The vendored `perspective-transform` library retains its [MIT notice](dist/vendor/LICENSE-perspective-transform.txt). The desktop HTML embeds both notices so they travel with a shared copy.

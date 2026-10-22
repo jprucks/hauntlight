@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 — 2026-10-22
+
+- Add a single-file offline desktop app and desktop ZIP for Mac and Windows; no runtime installation or account is required.
+- Add desktop download controls, generic projector guidance, and Windows URL shortcuts alongside Mac webloc shortcuts.
+- Explain local-file save limits and JSON backups; preserve the iPad controls and all 24 scenes.
+- Add an MIT project license and embed both project and dependency license notices in the portable app.
+- Correct stale repository publication notes and add quick-start instructions.
+- Use allowlisted packaging, version-derived archive names, checksums, and standalone distribution validation.
+
+
 ## 1.1.0 — 2026-10-21
 
 - Add ten orientation-neutral scenes and an Any orientation filter, plus wall/ceiling presets.

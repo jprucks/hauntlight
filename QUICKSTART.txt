@@ -1,0 +1,36 @@
+HAUNTLIGHT 1.2.0 — MAC & WINDOWS
+
+1. Extract the desktop ZIP if you downloaded it.
+2. Double-click Hauntlight.html. It opens in your default browser.
+   If a text editor opens instead, right-click → Open With → your browser.
+3. Choose a scene. Connect your projector and move the browser window onto
+   that display, or mirror your screen. Maximize/fullscreen before aligning.
+4. Click Align and move the four corners to match your surface, then Project.
+   Click/tap to show controls. Escape returns to the editor. B toggles blackout.
+5. Export layout to save your setup as JSON. Import layout restores it.
+
+No installation, account, Python, Node, or internet connection is needed for
+this file. Use a modern browser with JavaScript enabled. All 24 scenes are
+included. It does not run a server or open a network port. Close the tab to stop.
+
+For your Desktop: keep the HTML file there, or create a Mac alias / Windows
+shortcut to it. Do not rename it to .app or .exe. It is a portable browser app.
+
+IMPORTANT: Browser saving for local files is not a reliable backup. Export
+before moving, renaming, replacing the HTML file, clearing browser data, or
+switching browsers. Downloads contain default scenes, not your personal layout.
+
+For an iPad, use the hosted version in Safari; the Files preview is not a
+supported app runtime. Share → Add to Home Screen provides a shortcut.
+
+Try Any orientation for scenes suitable for any wall or ceiling. Start with
+Auto quality. Keep the device on power and prevent screen sleep for a show.
+Use the same display arrangement for calibration and projection. The canvas
+is 16:10. This version uses one browser window; there is no separate controller.
+
+Source and updates: https://github.com/jprucks/hauntlight/releases
+That repository requires permission while it remains private. You can share
+this HTML file or desktop ZIP directly; its recipient needs no GitHub account.
+
+License: MIT. Third-party attribution is embedded in Hauntlight.html and
+included in THIRD-PARTY-LICENSE.txt in the desktop ZIP.
