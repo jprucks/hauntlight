@@ -41,4 +41,4 @@ The selected library exposes homography coefficients for CSS 3D transforms. Proc
 
 ## Delivery state
 
-The Site's own source workflow versions hosted delivery. A separate new private GitHub repository was requested, but the available GitHub connector lacks a repository-create operation and the build environment lacks an authenticated `gh` CLI. The source includes `scripts/publish-github.sh` for the owner to complete that step using their authenticated account. No GitHub repository creation or GitHub push is claimed.
+Hauntlight is versioned in the owner's GitHub repository at https://github.com/jprucks/hauntlight and separately deployed to a private hosted Site. Releases include source downloads. Version 1.2.0 adds a standalone HTML desktop app and desktop ZIP for Mac and Windows; these run offline without a server or account. See README.md and QUICKSTART.txt for current instructions. The legacy publish-github.sh script is only a guarded bootstrap for a new private repository, not the update/deployment mechanism.
