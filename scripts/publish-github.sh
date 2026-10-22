@@ -3,7 +3,7 @@
 set -euo pipefail
 
 repo='jprucks/hauntlight'
-version='v1.1.0'
+version='v1.2.0'
 root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
 fail() { printf '%s\n' "$*" >&2; exit 1; }
 command -v git >/dev/null 2>&1 || fail 'Install Git before running this script.'
@@ -35,13 +35,13 @@ else
   git var GIT_AUTHOR_IDENT >/dev/null 2>&1 || fail 'Set git user.name and user.email first.'
   git init -b main
   git add --all
-  git commit -m 'feat: release Hauntlight projection studio v1.0.0'
+  git commit -m 'feat: release Hauntlight projection studio v1.2.0'
 fi
 if git show-ref --verify --quiet "refs/tags/$version"; then
   fail "$version already exists locally. No tag was changed."
 fi
 
-git tag -a "$version" -m 'Hauntlight 1.0.0: initial Halloween projection studio'
+git tag -a "$version" -m 'Hauntlight 1.2.0: portable projection studio'
 printf 'Creating private repository %s from %s\n' "$repo" "$root"
 # GitHub rejects a name collision; --private is explicit. Never overwrite remotes.
 gh repo create "$repo" --private --source="$root" --remote=origin
